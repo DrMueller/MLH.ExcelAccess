@@ -1,0 +1,36 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <Features>IOperation</Features>
+    <CodeAnalysisRuleSet>..\..\CA_ProductionCode.ruleset</CodeAnalysisRuleSet>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Company>DrMueller</Company>
+    <Product>MyLittleHelpers.ExcelAccess</Product>
+    <Authors>DrMueller</Authors>
+    <Description>DrMuellers little Excel Access</Description>
+    <PackageProjectUrl></PackageProjectUrl>
+    <PackageIconUrl>https://raw.githubusercontent.com/DrMueller/MLH.ExcelAccess/master/Sources/Application/Infrastructure/Assets/M.png</PackageIconUrl>
+    <RepositoryUrl></RepositoryUrl>
+    <RepositoryType></RepositoryType>
+    <PackageLicenseUrl></PackageLicenseUrl>
+    <AssemblyVersion Condition="'$(BUILD_BUILDNUMBER)' != '' ">$(BUILD_BUILDNUMBER)</AssemblyVersion>
+    <FileVersion Condition="'$(BUILD_BUILDNUMBER)' != '' ">$(BUILD_BUILDNUMBER)</FileVersion>
+    <Version Condition="'$(BUILD_BUILDNUMBER)' != '' ">$(BUILD_BUILDNUMBER)</Version>
+    <AssemblyVersion Condition="'$(BUILD_BUILDNUMBER)' == '' ">1.0.0.0</AssemblyVersion>
+    <FileVersion Condition="'$(BUILD_BUILDNUMBER)' == '' ">1.0.0.0</FileVersion>
+    <Version Condition="'$(BUILD_BUILDNUMBER)' == '' ">1.0.0.0</Version>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="EPPlus" Version="4.5.3.2" />
+    <PackageReference Include="Mmu.Mlh.LanguageExtensions" Version="2.1.23" />
+    <PackageReference Include="Mmu.Mlh.ServiceProvisioning" Version="2.0.7" />
+    <PackageReference Include="System.IO.Abstractions" Version="6.0.21" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Infrastructure\Assets\" />
+  </ItemGroup>
+
+</Project>
