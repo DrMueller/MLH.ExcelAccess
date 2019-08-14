@@ -1,4 +1,4 @@
-name: 1.0$(rev:.r) # build numbering format
+name: 1.1$(rev:.r) # build numbering format
 
 variables:
   BuildConfiguration: 'Release'
@@ -13,7 +13,14 @@ resources:
     endpoint: GitHub-DrMueller
 
 jobs:
-- template: AzureDevOps/BuildTemplates/NetCore/Jobs/Build_And_Publish_To_NuGet.yaml@ALMStuff
-  parameters:
-    FolderToPack: $(FolderToPack)
-    BuildConfiguration: $(BuildConfiguration)
+- job: 'BuildAndPublishToNuGet'
+  displayName: 'Build and publish to NuGet'
+  pool:
+    name: 'Hosted VS2017'
+  steps:
+  - template: AzureDevOps/BuildTemplates/NetCore/Steps/Initialize_And_Test.yaml@ALMStuff
+    parameters:
+      BuildConfiguration: $(BuildConfiguration)
+  - template: AzureDevOps/BuildTemplates/NetCore/Steps/Pack_And_Publish_To_NuGet.yaml@ALMStuff
+    parameters:
+      FolderToPack: $(FolderToPack)
