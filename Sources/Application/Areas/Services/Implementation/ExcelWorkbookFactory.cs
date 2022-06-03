@@ -27,7 +27,7 @@ namespace Mmu.Mlh.ExcelAccess.Areas.Services.Implementation
 
             foreach (var ws in excelPackage.Workbook.Worksheets)
             {
-                var cells = ws.Cells.Where(cell => cell.Value != null).Select(cell => AdaptCell(cell)).ToList();
+                var cells = ws.Cells.Where(cell => cell.Value != null).Select(AdaptCell).ToList();
                 worksheets.Add(new models.ExcelWorksheet(ws.Name, cells));
             }
 
